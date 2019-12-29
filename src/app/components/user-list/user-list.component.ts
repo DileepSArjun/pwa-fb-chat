@@ -12,7 +12,6 @@ export class UserListComponent implements OnInit {
 
   constructor(private chat: ChatService) { 
     chat.getUsers().subscribe(users => {
-      debugger;
       this.users = users;
     });
   }
