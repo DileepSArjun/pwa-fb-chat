@@ -20,6 +20,7 @@ import { UserItemComponent } from './components/user-item/user-item.component';
 import { ChatService } from './services/chat.service';
 import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ChatService, AuthService],
   bootstrap: [AppComponent]
