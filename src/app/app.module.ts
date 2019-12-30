@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 import { AppComponent } from './app.component';
 import { ChatFormComponent } from './components/chat-form/chat-form.component';
@@ -21,6 +22,8 @@ import { ChatService } from './services/chat.service';
 import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MessagingService } from './services/messaging.service';
+import { PushNotificationService } from './services/push-notification.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +46,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireMessagingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [ChatService, AuthService],
+  providers: [ChatService, AuthService, MessagingService, PushNotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

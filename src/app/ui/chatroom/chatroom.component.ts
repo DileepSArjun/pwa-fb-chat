@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { MessagingService } from 'src/app/services/messaging.service';
+import { PushNotificationService } from 'src/app/services/push-notification.service';
 
 @Component({
   selector: 'app-chatroom',
@@ -8,9 +10,15 @@ import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@ang
 export class ChatroomComponent implements OnInit, AfterViewChecked {
   @ViewChild('scroller', {static: false}) private feedContainer: ElementRef;
 
-  constructor() { }
+  constructor(
+    private msgService: MessagingService,
+    private pushNotifyService: PushNotificationService
+  ) { }
 
   ngOnInit() {
+    this.pushNotifyService.subscribePermission();
+    this.pushNotifyService.requestPermission();
+    this.pushNotifyService.receiveMessage();
   }
 
   ngAfterViewChecked() {
