@@ -19,10 +19,18 @@ export class LoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.authUser().subscribe(
+      (userDetails) => {
+        if(userDetails && userDetails.email) {
+          //user is already logged in
+          this.router.navigate(['chat']);
+        }
+      },
+      (error) => { console.log(error);}
+    );
   }
 
   login() {
-    console.log('login() called from login-form component');
     this.authService.login(this.email, this.password)
     .catch(error => this.errorMsg = error.message);
   }

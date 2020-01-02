@@ -1,19 +1,22 @@
-<div class="container">
-    <div class="loginCard">
-      <h2 class="heading">Log In</h2>
-        <input 
+<form class="example-form">
+      <mat-form-field class="username">
+        <input matInput 
+          placeholder="email id"
           [(ngModel)]="email"
           type="email" 
-          name="email" 
-          class="formInput" />
-        <input type="password" 
-          [(ngModel)]="password"
-          name="password" 
-          class="formInput" />
-        <button class="btn" 
-                id="btn-login" 
-                (click)="login()">
-                Log In
-        </button>
-    </div>
-</div>
+          name="email" required>
+      </mat-form-field>
+    
+      <mat-form-field class="password">
+          <input matInput 
+            placeholder="password"
+            [(ngModel)]="password"
+            type="password" 
+            name="password" required>
+      </mat-form-field>
+
+      <div class="button-container">
+          <button mat-raised-button color="primary"
+            (click)="login()">Next</button>
+        </div>
+</form>

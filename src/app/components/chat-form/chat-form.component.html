@@ -1,8 +1,5 @@
-<input 
-    class="chatInput"
-    [(ngModel)]="message"
-    (keydown)="handleSubmit($event)"
-/>
+<mat-form-field>
+    <input matInput [(ngModel)]="message" placeholder="Message" (keydown)="handleSubmit($event)">
+</mat-form-field>
 
-<button class="chatButton"
-    (click)=send()>Send</button>
+<button mat-button (click)=send()>Send</button>

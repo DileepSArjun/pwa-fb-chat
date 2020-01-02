@@ -1,18 +1,19 @@
-<div class="navBar">
-    <div id="logo"></div>
-    <div id="heading"><a routerLink="/">basechat</a></div>
-  <div class="links">
-    <!-- <span>
-      <a *ngIf="!(user|async)?.uid" href="#" (click)="login()">Login</a>
-    </span> -->
-    <span>
-      <a *ngIf="!(user|async)?.uid" routerLink="/signup">Sign Up</a>
-    </span>
-    <span>
-      <span id="userEmail" *ngIf="(user|async)?.uid">Hello, {{userEmail}}</span>
-    </span>
-    <span>
-      <a *ngIf="(user|async)?.uid" href="#" (click)="logout()">Logout</a>
-    </span>
-  </div>
-</div>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">forum</mat-icon>
+        <span>PWA</span>
+        <span class="example-spacer"></span>
+        <div
+            *ngIf="(user|async)?.uid">
+            <span>{{userEmail}}</span>
+            <button 
+                mat-button 
+                (click)="logout()"
+                >logout</button>
+        </div>
+        <div *ngIf="!(user|async)?.uid">
+            <button mat-button routerLink="/signup">Sign Up</button>
+            <button mat-button routerLink="/login">Login</button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

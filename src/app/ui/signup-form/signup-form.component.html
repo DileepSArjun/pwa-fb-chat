@@ -1,4 +1,46 @@
-<div class="container">
+<form class="example-form" #signupForm="ngForm">
+  <div>
+      <mat-form-field>
+          <input matInput 
+            placeholder="Enter your email address"
+            [(ngModel)]="email"
+            type="email" 
+            name="email" 
+            maxlength="60" required>
+        </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field>
+          <input matInput 
+            placeholder="Choose a password"
+            [(ngModel)]="password"
+            type="password" 
+            minlength="6"
+            name="password" required>
+      </mat-form-field>
+  </div>
+
+  <div>
+      <mat-form-field>
+          <input matInput 
+            placeholder="Enter a display name"
+            [(ngModel)]="displayName"
+            type="text" 
+            maxlength="12"
+            name="displayName" required>
+      </mat-form-field>
+  </div>
+
+  <div class="button-container">
+      <button 
+        mat-raised-button color="primary"
+        [disabled]="!signupForm.form.valid"
+        type="submit"
+        (click)="signUp()">Sign Up</button>
+    </div>
+</form>
+
+<!-- <div class="container">
     <div class="signUpCard">
      <form #signupForm="ngForm">
       <h2 class="heading">Sign Up</h2>
@@ -32,4 +74,4 @@
         </button>
       </form>
     </div>
-</div>
+</div> -->
